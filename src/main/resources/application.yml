@@ -6,3 +6,35 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: "http://localhost:8081"
+  jpa:
+    hibernate:
+      ddl-auto: 'create'
+    show-sql: true
+  datasource:
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 5
+    url: jdbc:postgresql://localhost:5433/auth
+    username: admin
+    password: password
+
+
+server:
+  port: 8085
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include:
+          - "health"
+          - "prometheus"
+          - "metrics"
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
