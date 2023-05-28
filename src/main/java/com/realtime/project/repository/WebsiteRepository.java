@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface WebsiteRepository extends JpaRepository<Website, String> {
 
-    public Optional<Website> findByWebsiteName(String websiteName);
+    Optional<Website> findByWebsiteName(String websiteName);
 }
