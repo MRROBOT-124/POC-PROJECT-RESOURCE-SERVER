@@ -13,6 +13,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * SUBMIT WEBSITE AND STORED IN POSTGRESQL DATABASE
+ * THIS CLASS CONTAINS METHODS THAT CAN PULL THE NECESSARY RECORDS
+ * NEEDED.
+ */
 @Service
 public class WebsiteService {
 
@@ -21,10 +26,22 @@ public class WebsiteService {
     @Autowired
     private WebsiteInfoRepository websiteInfoRepository;
 
+    /**
+     * SUBMIT WEBSITE
+     * @param website "WEBSITE"
+     * @return "WEBSITE"
+     */
     public Website submitWebsite(Website website) {
         return websiteRepository.save(website);
     }
 
+    /**
+     * ADD WEBSITE INFO TO THE WEBSITE
+     * @param websiteId "WEBSITE ID"
+     * @param websiteInfo "WEBSITE INFO"
+     * @return "WEBSITE"
+     * @throws DataDoesNotExistsException "DATA DOES NOT EXISTS"
+     */
     public Website addWebsiteInfo(String websiteId, List<WebsiteInfo> websiteInfo) throws DataDoesNotExistsException {
         Optional<Website> optionalWebsite = websiteRepository.findById(websiteId);
         if(optionalWebsite.isEmpty()) {
@@ -35,6 +52,12 @@ public class WebsiteService {
         return websiteRepository.save(website);
     }
 
+    /**
+     * GET WEBSITE BY WEBSITE NAME
+     * @param websiteName "WEBSITE NAME"
+     * @return "WEBSITE"
+     * @throws DataDoesNotExistsException "DATA DOES NOT EXISTS"
+     */
     public Website fetchWebsiteByName(String websiteName) throws DataDoesNotExistsException {
         Optional<Website> optionalWebsite = websiteRepository.findByWebsiteName(websiteName);
         if(optionalWebsite.isEmpty()) {
@@ -43,6 +66,12 @@ public class WebsiteService {
         return optionalWebsite.get();
     }
 
+    /**
+     * GET WEBSITE BY WEBSITE ID
+     * @param websiteId "WEBSITE ID"
+     * @return "WEBSITE"
+     * @throws DataDoesNotExistsException "DATA DOES NOT EXISTS"
+     */
     public Website fetchWebsiteById(String websiteId) throws DataDoesNotExistsException {
         Optional<Website> optionalWebsite = websiteRepository.findById(websiteId);
         if(optionalWebsite.isEmpty()) {
@@ -51,6 +80,13 @@ public class WebsiteService {
         return optionalWebsite.get();
     }
 
+    /**
+     * ASSIGN TAG TO THE WEBSITE
+     * @param websiteId "WEBSITE ID"
+     * @param tags "TAGS"
+     * @return "WEBSITE"
+     * @throws DataDoesNotExistsException "DATA DOES NOT EXISTS"
+     */
     public Website addTags(String websiteId, List<Tags> tags) throws  DataDoesNotExistsException {
         Optional<Website> optionalWebsite = websiteRepository.findById(websiteId);
         if(optionalWebsite.isEmpty()) {

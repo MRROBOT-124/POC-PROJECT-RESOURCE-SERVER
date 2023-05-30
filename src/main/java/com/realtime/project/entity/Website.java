@@ -10,6 +10,9 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * POJO CLASS USED TO REPRESENT WEBSITE
+ */
 @Getter
 @Setter
 @Entity

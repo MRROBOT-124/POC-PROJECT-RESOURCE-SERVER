@@ -6,6 +6,9 @@ import lombok.*;
 import java.io.Serializable;
 import java.time.Instant;
 
+/**
+ * POJO CLASS USED TO REPRESENT WEBSITE INFO
+ */
 @Getter
 @Setter
 @NoArgsConstructor
