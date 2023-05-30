@@ -6,6 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+/**
+ * REPOSITORY CLASS THAT CONTAINS ALL THE CRUD
+ * OPERATIONS FOR THE WEBSITE
+ */
 @Repository
 public interface WebsiteRepository extends JpaRepository<Website, String> {
 
