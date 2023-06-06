@@ -24,6 +24,16 @@ public class WebsiteController {
 
     /**
      * FETCH WEBSITE BASED ON WEBSITE NAME
+     * @return "LIST OF WEBSITE"
+     */
+    @GetMapping(value = "/")
+    public Mono<List<Website>> findAll() {
+        List<Website> website = websiteService.getAll();
+        return Mono.just(website);
+    }
+
+    /**
+     * FETCH WEBSITE BASED ON WEBSITE NAME
      * @param websiteName "WEBSITE NAME"
      * @return "WEBSITE"
      * @throws DataDoesNotExistsException "DATA DOES NOT EXISTS"
@@ -52,8 +62,8 @@ public class WebsiteController {
      * @return "WEBSITE"
      */
     @PostMapping(value = "/add")
-    public Mono<Website> submitWebsite(@RequestBody Website website) {
-        Website submitWebsite = websiteService.submitWebsite(website);
+    public Mono<Website> submitWebsite(@RequestBody Website website ,@RequestParam String username) {
+        Website submitWebsite = websiteService.submitWebsite(website,username);
         return Mono.just(submitWebsite);
     }
 
@@ -65,8 +75,8 @@ public class WebsiteController {
      * @throws DataDoesNotExistsException "DATA DOES NOT EXISTS"
      */
     @PutMapping(value = "/update/images")
-    public Mono<Website> addWebsiteInfo(@RequestBody List<WebsiteInfo> websiteInfo, @RequestParam String websiteId) throws DataDoesNotExistsException {
-        Website website = websiteService.addWebsiteInfo(websiteId, websiteInfo);
+    public Mono<Website> addWebsiteInfo(@RequestBody List<WebsiteInfo> websiteInfo, @RequestParam String websiteId ,@RequestParam String username) throws DataDoesNotExistsException {
+        Website website = websiteService.addWebsiteInfo(websiteId, websiteInfo, username);
         return Mono.just(website);
     }
 
@@ -78,8 +88,8 @@ public class WebsiteController {
      * @throws DataDoesNotExistsException "DATA DOES NOT EXISTS"
      */
     @PutMapping(value = "/update/tags")
-    public Mono<Website> addTags(@RequestBody List<Tags> tags, @RequestParam String websiteId) throws DataDoesNotExistsException {
-        Website website = websiteService.addTags(websiteId, tags);
+    public Mono<Website> addTags(@RequestBody List<Tags> tags, @RequestParam String websiteId, @RequestParam String username) throws DataDoesNotExistsException {
+        Website website = websiteService.addTags(websiteId, tags, username);
         return Mono.just(website);
     }
 }

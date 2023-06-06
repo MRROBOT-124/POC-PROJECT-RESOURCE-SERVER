@@ -22,11 +22,12 @@ import java.util.List;
 @AllArgsConstructor
 public class Website implements Serializable {
 
+
     @Id
     @GeneratedValue(generator = "sequence-generator")
     @GenericGenerator(
             name = "sequence-generator",
-    type = WebsiteSequenceGenerator.class)
+            type = WebsiteSequenceGenerator.class)
     private String id;
     private String websiteName;
     private String creatorName;
@@ -36,11 +37,13 @@ public class Website implements Serializable {
     @Builder.Default
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, targetEntity = Tags.class)
     @JoinTable(name = "website_tag",
-    joinColumns = @JoinColumn(name = "website_id"),
-    inverseJoinColumns = @JoinColumn(name = "tag_id"))
+            joinColumns = @JoinColumn(name = "website_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Tags> tags = new ArrayList<>();
     @Builder.Default
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, targetEntity = WebsiteInfo.class, mappedBy = "website")
     private List<WebsiteInfo> images = new ArrayList<>();
+
+
 
 }

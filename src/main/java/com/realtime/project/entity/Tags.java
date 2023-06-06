@@ -26,6 +26,7 @@ import java.util.UUID;
 public class Tags implements Serializable {
 
     @Id
+    @Builder.Default
     private String id = UUID.randomUUID().toString() + "_" + LocalDateTime.now();
     private String tagName;
     private String tagDescription;

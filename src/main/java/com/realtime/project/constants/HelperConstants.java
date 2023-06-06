@@ -6,4 +6,6 @@ public final class HelperConstants {
 
     public static final String WEBSITE_DOES_NOT_EXISTS = "Website does not exists";
     public static final String TAG_DOES_NOT_EXISTS = "Tag does not exists";
+
+    public static final String WEBSITE = "WEBSITE";
 }
